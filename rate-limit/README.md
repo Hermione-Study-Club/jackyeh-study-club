@@ -115,10 +115,26 @@ I will provide several solutions for the rate limiter feature
                    - ...
                  - Time unit
                  - Request per time unit
-   - Pros
+   - Tradeoff
+     - Why do I use load balancer
+       - Auto scaling
+       - Health check and error handling
+     - Why do I use cache
+       - If we don't use cache, we have to use sticky session
+       - It won't take advantage of the load balancer
+       - For the unpredictable amount of compute units, we have to use cache to share the request info between compute units
+     - Why do I use redis
+       - The most often used cache are Memcached and Redis
+       - Redis offers a rich set of features 
+         - Multi Command (like DB Transaction)
+         - sorted set data structure
+       - Memcached is a basic key-value in-memory data storage systems. It is suitable for simple situation
+     - Why do I use logging tools
+       - For recording users' behavior and analyzing the pattern
+       - For finding the robot or malicious attack and block it
 
-   - Cons
    - Problems
+     - What if Redis cluster can't handle the large requests?
 
 
 ---
@@ -156,6 +172,8 @@ I will provide several solutions for the rate limiter feature
                - Compute unit may fail
                - Expiration and update of the quota (quota need to be released periodically)
                  - can use Redis 6 feature: RESP3
-   - Pros
+   - Tradeoff
+     - Share the loading for Redis cluster with compute units
+       - It increases the difficulty to develop applications
+       - Need to handle the expiration/release of request quota in the application
 
-   - Cons
