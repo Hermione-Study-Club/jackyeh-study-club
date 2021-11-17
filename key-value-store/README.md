@@ -28,15 +28,67 @@
 
 ---
 
-## Consensus algorithm
-- Paxos
-- Two-phase commit
+## Consistency Models
+
+![consistency_model](./consistency_model.png)
 
 ---
 
-## Gossip protocol
+## Read-Repair and Anti-Entropy
 
 
+---
+
+## Strict Quorum
+
+- W+W > N and W+R > N
+- Low availability
+
+---
+
+## Sloppy Quorum & Hinted Handoff
+
+- Alaways Writable
+
+---
+
+## Vector clock
+- Problem
+  - Don't know the total node number
+  - vector size
+
+---
+
+## Consensus Algorithm
+### Consensus Algorithm Requirements
+- Termination
+- Validity
+- Agreement
+
+---
+
+- System Model
+  - Network Model
+    - Synchronous network
+    - Asynchronous network
+  - Failure Model
+    - Byzantine failures
+    - Crash-recovery failures
+    - Omission failures
+    - Crash failure
+
+---
+## FLP Impossibility
+No completely asynchronous consensus protocol can tolerate even a single unannounced process death. 
+
+---
+
+## Algorithm example
+- Paxos
+- Raft
+- Two-Phase Commitment (2PC)
+- Three-Phase Commitment (3PC)
+- ...
 
 ---
 ## System components
@@ -72,3 +124,4 @@ https://arthurchiao.art/blog/amazon-dynamo-zh/
 https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf
 https://snaildove.github.io/2019/12/31/Paper-Google-Bigtable_translation-and-summary_online/
 https://ithelp.ithome.com.tw/articles/10218827
+https://jepsen.io/consistency
