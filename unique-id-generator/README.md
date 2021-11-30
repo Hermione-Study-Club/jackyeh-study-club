@@ -124,10 +124,10 @@
       -  The principle is that redis is single threaded, so we can use the incr command of redis to realize the atomic auto increment of ID.
       - Sample code
     ```shell
-    127.0.0.1:6379> set seq_id 1     //Initialize auto increment ID to 1
+    127.0.0.1:6379> set seq_id 1     // Initialize auto increment ID to 1
     OK
-    127.0.0.1:6379> incr seq_id      //Increases by 1 and returns the incremented value
-(integer) 2
+    127.0.0.1:6379> incr seq_id      // Increases by 1 and returns the incremented value
+    (integer) 2
     ```
     - pros
       - Single thread before Redis 6.0
@@ -139,14 +139,17 @@
     - cons
 7. Baidu uid generator
     - content
+      - SnowFlake
     - pros
     - cons
 8. Leaf
     - content
+      - Segment pattern + SnowFlake
     - pros
     - cons
 9. Tinyid
     - content
+      - Segment pattern
     - pros
     - cons
 
@@ -155,6 +158,36 @@
 ## Snowflake
 
 - ![Architecutre](arch.png)
+
+- Consider Consistency
+  - Strong consistency: ZooKeeper (Paxos Protocol)
+  - Eventually consistency: Consul (Gossip Protocol)
+
+- Consider durability
+  - Should we store the ID with the target into the disk/memory
+  - Could we just assign number plates without durability
+- Consider Speed
+  - for each VM, each can handle (65535 - 1024) number
+    - (65535 - 1024) port for each VM
+- Consider the target
+  - frontent vs backend
+  - The JavaScript Number type is a double-precision 64-bit binary format IEEE 754 value
+    - Number.MAX_SAFE_INTEGER = 2^53 - 1 
+    - Replace number type with string type
+
+- How to get workerID?
+  - Through ZooKeeper
+
+- Should we use mutli-thread in one VM?
+  - If yes, we have to avoid race condition
+    - In Java/Scala: synchronized
+- What if one VM assign over 4096 number plates in one millisecond
+  - While loop to next millisecond
+
+- What if current timestamp <  last timestamp?
+  - Rejecting requests until last timestamp
+
+- bitwise operation for speed up
 
 
 ---
@@ -168,4 +201,4 @@
 - https://segmentfault.com/a/1190000011282426?utm_source=sf-similar-article
 - https://instagram-engineering.com/sharding-ids-at-instagram-1cf5a71e5a5c#.nk5946458
 - https://github.com/baidu/uid-generator
-- 
+- https://github.com/beyondfengyu/SnowFlake/blob/master/SnowFlake.java
