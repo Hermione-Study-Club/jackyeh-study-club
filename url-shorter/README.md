@@ -52,7 +52,18 @@
    1. where will we store these data? blob storage? tape?
    2. when will we expire these data
       1. schedule job? What if it makes high overhead?
+         1. build an offline process. execute it only if the overhead is low
 7. Data analysis
    1. how should we build a ETL pipeline
       1. scheduler + batch job
-      2. streaming
+      2. streaming + message queue
+
+
+## Reference
+1. https://www.jyt0532.com/2019/12/05/design-tiny-url/
+2. https://codemonkey.coderbridge.io/2021/07/11/web-structure-design
+3. https://soulmachine.gitbooks.io/system-design/content/cn/tinyurl.html
+4. https://www.twblogs.net/a/5db35e84bd9eee310ee68793
+5. https://kknews.cc/zh-tw/code/n25gkb2.html
+6. https://iter01.com/525762.html
+7. https://hackmd.io/@keronscribe/H1_UkDtEH
