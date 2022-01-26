@@ -118,10 +118,11 @@ No completely asynchronous consensus protocol can tolerate even a single unannou
 ---
 
 ## Reference
-https://www.infoq.cn/article/cap-twelve-years-later-how-the-rules-have-changed/
-https://zhuanlan.zhihu.com/p/41228196
-https://arthurchiao.art/blog/amazon-dynamo-zh/
-https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf
-https://snaildove.github.io/2019/12/31/Paper-Google-Bigtable_translation-and-summary_online/
-https://ithelp.ithome.com.tw/articles/10218827
-https://jepsen.io/consistency
+- https://www.infoq.cn/article/cap-twelve-years-later-how-the-rules-have-changed/
+- https://zhuanlan.zhihu.com/p/41228196
+- https://arthurchiao.art/blog/amazon-dynamo-zh/
+- https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf
+- https://snaildove.github.io/2019/12/31/Paper-Google-Bigtable_translation-and-summary_online/
+- https://ithelp.ithome.com.tw/articles/10218827
+- https://jepsen.io/consistency
+- https://moz.com/blog/knowing-black-hat-seo
